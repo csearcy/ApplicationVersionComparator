@@ -1,0 +1,50 @@
+﻿@page
+@model VersionCompareModel
+
+<div class="container">
+    <h1 class="mt-4 mb-3">
+        Software Version Manager
+        <br />
+        <small>Find which applications have newer versions.</small>
+    </h1>
+    <div>
+        <div class="row">
+            <form asp-page="VersionManager" method="post" id="versionCompareForm">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label asp-for="Version">Enter a version number:</label>
+                        <input asp-for="Version" class="form-control">
+                        <span asp-validation-for="Version"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" id="sendVersionButton">Get Application List</button>
+            </form>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <table cellpadding="0" cellspacing="0">
+                    @if (Model.NewerApplications != null && Model.NewerApplications.Any())
+                    {
+                        <tr>
+                            <th><strong>Application Name</strong></th>
+                            <th><strong>Version</strong></th>
+                        </tr>
+
+                        @foreach (var application in Model.NewerApplications)
+                        {
+                            <tr>
+                                <td>@application.Name</td>
+                                <td>@application.Version</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td><strong>No applications to show...</strong></td></tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

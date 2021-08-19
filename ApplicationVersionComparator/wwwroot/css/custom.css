@@ -1,0 +1,12 @@
+﻿table td + td, table th + th {
+    border-left: 2px solid black;
+}
+
+table th, table td {
+    padding: 5px;
+}
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
