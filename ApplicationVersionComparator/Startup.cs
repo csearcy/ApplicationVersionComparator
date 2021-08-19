@@ -26,7 +26,11 @@ namespace ApplicationVersionComparator
         {
             services.AddRazorPages();
             services.AddScoped<IVersionManagerService, VersionManagerService>();
-
+            services.AddMvcCore().AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/VersionManager", "");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
